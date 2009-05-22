@@ -1,4 +1,3 @@
-
 require "yaml"
 
 class CHMBundle
@@ -58,4 +57,3 @@ class CHMBundle
 		end
 	end
 end
-

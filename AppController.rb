@@ -134,4 +134,3 @@ class AppController < NSObject
 	end
 
 end
-
