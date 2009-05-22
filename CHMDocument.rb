@@ -188,7 +188,7 @@ class CHMWindowController < NSWindowController
 			@index
 		else
 			if keyword.length < KEY_LENGTH
-				result = @hash.keys.select{|k| k.start_with? key}.map{|k| @hash[k]}.flatten(1)
+				result = @hash.keys.select{|k| k[0, key.length] == key}.map{|k| @hash[k]}.inject([]){|a,b| a + b}
 			else
 				result = @hash[key].to_a
 			end
