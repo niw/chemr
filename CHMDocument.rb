@@ -153,7 +153,7 @@ class CHMWindowController < NSWindowController
 			#  > OutlineView は DataSource に、ノードの値が変わらない限り、
 			#  > 同じ NSString を返すように期待してるようです。
 			# NSDictionary で保持するように
-			@topics = NSDictionary.dictionaryWithDictionary(@chm.topics)
+			@topics = NSDictionary.dictionaryWithDictionary(@chm.topics || {:children => []})
 			@tree.setDataSource(self)
 		end
 	end
