@@ -1,10 +1,11 @@
 Chemr
 =====
 
-Chemr is awsome CHM viwer working on MacOS X.
+Chemr is awesome CHM viwer working on MacOS X.
 
 This repository is forked from the original svn repository of Chemr.
 After forking, I fixed some bugs for using it on Leopard.
+
 Original Chemr is coming from [cho45](http://github.com/cho45).
 
 Original README
