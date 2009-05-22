@@ -52,15 +52,19 @@ class CHMInternalURLProtocol < NSURLProtocol
 		chm = ObjectSpace._id2ref(url.port.to_s.to_i)
 
 		log url.path.to_s
-		raise "JS" if url.path.to_s =~ /\.js$/
-		text = url.parameterString ? chm.retrieve_object("#{url.path};#{url.parameterString}") \
-		                           : chm.retrieve_object("#{url.path}")
+		#raise "JS" if url.path.to_s =~ /\.js$/ # enable js
+		text = url.parameterString ? chm.retrieve_object("#{url.path};#{url.parameterString}") : chm.retrieve_object("#{url.path}")
 		raise "empty" if text.empty?
 		data = NSData.dataWithBytes_length(text, text.length)
+		# FIXME
+		mime = {
+			"css" => "text/css",
+			"js" => "text/javascript"
+		}[File.extname(url.path)[1..-1]] || "text/html"
 
 		response = NSURLResponse.alloc.objc_send(
 			:initWithURL, url,
-			:MIMEType, "text/html",
+			:MIMEType, mime,
 			:expectedContentLength, data.length,
 			:textEncodingName, nil
 		)
