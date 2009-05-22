@@ -54,8 +54,7 @@ class CHMWindowController < NSWindowController
 				@search.currentEditor.setSelectedRange(NSRange.new(@search.stringValue.length, 0))
 				controlTextDidChange(nil)
 
-				r = NSURLRequest.requestWithURL NSURL.URLWithString(config[:url])
-				@webview.mainFrame.loadRequest r
+				browse(config[:url])
 			else
 				config = category[:last]
 				if config
